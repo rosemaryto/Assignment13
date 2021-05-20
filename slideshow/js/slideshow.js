@@ -3,6 +3,8 @@ const $ = (id) => {
     return document.getElementById(id);
 };
 
+
+
 const createSlideshow = function () {
     // PRIVATE VARIABLES AND FUNCTIONS
     let timer;
@@ -44,11 +46,12 @@ const createSlideshow = function () {
             return this;
         },
         startSlideShow: function () {
+            var speed = 2000;
             if (arguments.length === 2) {
                 nodes.image = arguments[0];
                 nodes.caption = arguments[1];
             }
-            timer = setInterval(displayNextImage, 2000);
+            timer = setInterval(displayNextImage, speed);
             return this;
         },
         createToggleHandler: function () {
@@ -85,4 +88,10 @@ window.addEventListener('load', () => {
     slideshow.loadImages(slides).startSlideShow($('image'), $('caption'));
     // PAUSE THE SLIDESHOW
     $('play_pause').onclick = slideshow.createToggleHandler();
+
+    $("set_speed").addEventListener("click", function addurName() {
+        var speed = prompt('Enter a speed').value;   
+    });
+
+       
 });
